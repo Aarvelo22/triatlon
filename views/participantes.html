@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="inscripcion.css">
+    <title>Participantes Inscritos</title>
+    <link rel="stylesheet" href="/public/css/participantes.css"> 
+</head>
+<body>
+    <div class="bg"></div>
+    <main>
+        <header>
+            <div class="barra">
+                <a href="" class="logo">
+                    <h2>TRIATLÓN 2024</h2>
+                </a>
+                <nav>
+                    <a href="index.html" class="nav-link"><img src="img/casa.png" alt="inicio"></a>
+                    <a href="participantes.html" class="nav-link">PARTICIPANTES</a>
+                    <a href="Inscripcion.html" class="nav-link">INSCRIBIRSE</a>
+                </nav>
+            </div>
+        </header>
+        <div class="contenido">
+            <section>   
+                <h1>Participantes Inscritos</h1>
+                <div id="lista-participantes"></div> <!-- Aquí se listarán los participantes -->
+                <!-- Botón "Confirmar Cambios" en la parte de Participantes Inscritos -->
+                <button id="confirmarCambios">Confirmar Cambios</button>
+            </section>
+            <section>   
+                <h1>Inicio del evento</h1>
+                <div class="listaevento">
+                    <table id="tabla-competidores" class="tabla-competencia">
+                        <thead>
+                            <tr>
+                                <th>Posicion</th>
+                                <th>Cédula</th>
+                                <th>Nombre</th>
+                                <th>Edad</th>
+                                <th>Municipio</th>
+                                <th>Posición (km)</th>
+                                <th>Disciplina</th>
+                                <th>Tiempo Total</th>
+                                <th>Tiempo Caminata</th>
+                                <th>Tiempo Natación</th>
+                                <th>Tiempo Ciclismo</th>
+                                <th>Estado</th>
+                                <th>Hora de llegada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí se llenará la tabla dinámicamente con los resultados -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="botones">
+                    <button id="iniciarSimulacion">Iniciar Simulación</button>
+                    <button id="detenerSimulacion">Detener Simulación</button>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <h3>Ministerio del Poder Popular Para el Deporte</h3>
+            <h4>Desarrollado por la Dirección de Sistemas y Desarrollos de Tecnologías</h4>
+            <h5>Copyright ©2024</h5>
+        </footer>
+
+        <!-- Aquí se incluye el archivo JS -->
+        <script src="/scripts/competencia.js"></script>
+        <script src="/scripts/participantes.js"></script> <!-- Este archivo maneja los participantes -->
+    </main>
+</body>
+</html>
