@@ -1,0 +1,96 @@
+*{
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+    padding: 80px 0;
+}
+.header__container{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+    gap: 10px;
+}
+.header__container__logo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    padding-right: 5px;
+}
+.header__container__logo_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.img-1{
+display: flex;
+justify-content: center;
+width: 100%;
+height: 100%;
+
+}
+
+.header__container__gobi{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.img-2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.header__nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 5px;
+}
+.header__nav ul{
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+   
+    gap: 12px;
+}
+.header__nav ul li{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
+.participantes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.inscripcion{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    width: 100%;
+    height: 100%;
+}
