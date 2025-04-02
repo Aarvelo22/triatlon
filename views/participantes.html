@@ -8,20 +8,33 @@
     <link rel="stylesheet" href="/public/css/participantes.css"> 
 </head>
 <body>
-    <div class="bg"></div>
-    <main>
-        <header>
-            <div class="barra">
-                <a href="" class="logo">
-                    <h2>TRIATLÓN 2024</h2>
-                </a>
-                <nav>
-                    <a href="index.html" class="nav-link"><img src="img/casa.png" alt="inicio"></a>
-                    <a href="participantes.html" class="nav-link">PARTICIPANTES</a>
-                    <a href="Inscripcion.html" class="nav-link">INSCRIBIRSE</a>
-                </nav>
+    <header>
+        <div class="header__container">
+            <div class="header__container__logo">
+                <div class="header__container__logo__img">
+                <img  class="img-1"   src="/public/img/dracula.png" alt="Logo">
+                </div>
+                <a href="index.html">TRIATLÓN 2025</a>
             </div>
-        </header>
+
+            <div class="header__container__gobi">
+                <img  class="img-2" src="/public/img/logo gobi.png" alt="">
+            </div>
+        </div>
+
+        <nav class="header__nav">
+            <ul class="header__nav__list">
+                <div class="participantes">
+                <li><a href="/views/participantes.html">Participantes</a></li>
+                </div>
+                <div class="inscripcion">
+                <li><a href="/views/inscripcion.html">Inscripciones</a></li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
         <div class="contenido">
             <section>   
                 <h1>Participantes Inscritos</h1>
@@ -66,10 +79,10 @@
             <h4>Desarrollado por la Dirección de Sistemas y Desarrollos de Tecnologías</h4>
             <h5>Copyright ©2024</h5>
         </footer>
-
-        <!-- Aquí se incluye el archivo JS -->
-        <script src="/scripts/competencia.js"></script>
-        <script src="/scripts/participantes.js"></script> <!-- Este archivo maneja los participantes -->
     </main>
+      
+        <script src="/scripts/competencia.js"></script>
+        <script src="/scripts/participantes.js"></script> 
+
 </body>
 </html>

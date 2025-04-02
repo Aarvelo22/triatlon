@@ -1,7 +1,25 @@
-* {
+/* Base Styles and Variables */
+:root {
+    --primary-color: #cd0909;
+    --primary-dark: #a00707;
+    --primary-light: #ff3b3b;
+    --secondary-color: #333333;
+    --text-color: #222222;
+    --light-color: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-medium: #e0e0e0;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  * {
     box-sizing: border-box;
     margin: 0;
-    color: #000000;
+    color: var(--text-color);
     list-style: none;
     text-decoration: none;
     padding: 0;
@@ -13,6 +31,17 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--gray-light);
+    animation: fadeIn 1s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   
   .todo {
@@ -21,6 +50,7 @@
     min-height: 100vh;
   }
   
+  /* Content Area */
   .contenido {
     margin: 40px 80px;
     display: flex;
@@ -28,65 +58,128 @@
     flex: 1;
     justify-content: center;
     align-items: center;
+    animation: slideUp 0.8s ease;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   
   .formulario {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--light-color);
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    box-shadow: 0 5px 15px rgb(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-large);
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     overflow: hidden;
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  }
+  
+  .formulario:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-large), 0 15px 35px rgba(0, 0, 0, 0.1);
   }
   
   h1 {
-    font-size: 2rem;
-    color: rgb(0, 0, 0);
+    font-size: 2.2rem;
+    color: var(--text-color);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
   }
   
+  h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+  }
+  
+  /* Form Section */
   section {
-    padding: 25px;
+    padding: 45px 35px;
     width: 50%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--light-color);
     display: flex;
     flex-direction: column;
+    border-right: 1px solid var(--gray-medium);
   }
   
   section form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
     width: 100%;
   }
   
+  /* Background Section */
   .fondo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 45px 35px;
     width: 50%;
-    background-color: #f0f0f0;
+    background-color: var(--primary-color);
+    background-image: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     text-align: center;
-    gap: 20px;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .fondo::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    animation: pulse 15s infinite linear;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
   .fondo h1 {
-    color: #000;
-    font-size: 32px;
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    color: var(--light-color);
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     margin: 0;
   }
   
+  .fondo h1::after {
+    background-color: var(--light-color);
+  }
+  
   .fondo h5 {
-    color: #333;
+    color: var(--light-color);
     text-align: center;
-    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1.1rem;
+    line-height: 1.6;
   }
   
   .fondo button {
@@ -94,49 +187,89 @@
     width: 80%;
     max-width: 220px;
     height: 50px;
-    background-color: rgba(121, 119, 119, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.8);
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    color: var(--light-color);
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
     margin-top: 20px;
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .fondo button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition-medium);
   }
   
   .fondo button:hover {
-    background-color: rgba(174, 174, 174, 0.9);
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
   
+  .fondo button:hover::before {
+    animation: shine 1.5s infinite;
+  }
+  
+  @keyframes shine {
+    100% {
+      left: 100%;
+    }
+  }
+  
+  /* Form Elements */
   .inputbox,
   .selectbox {
     position: relative;
-    margin: 15px 0;
+    margin: 10px 0 20px;
     width: 100%;
-    border-bottom: 2px solid rgb(158, 158, 158);
+    border-bottom: 2px solid var(--gray-medium);
+    transition: border-color var(--transition-fast);
+  }
+  
+  .inputbox:hover,
+  .selectbox:hover {
+    border-bottom: 2px solid var(--primary-light);
   }
   
   .inputbox input,
   .selectbox select {
     width: 100%;
-    height: 30px;
+    height: 40px;
     background: transparent;
     border: none;
     outline: none;
     font-size: 1rem;
-    padding: 0 5px;
-    color: #000000;
+    padding: 5px 10px;
+    color: var(--text-color);
+    transition: all var(--transition-fast);
+  }
+  
+  .inputbox input:focus,
+  .selectbox select:focus {
+    padding-left: 15px;
   }
   
   .opcion {
-    color: black;
+    color: var(--text-color);
   }
   
   .contenido label {
     position: absolute;
     top: 50%;
-    left: 5px;
+    left: 10px;
     transform: translateY(-50%);
-    color: #000000;
+    color: var(--secondary-color);
     font-size: 1rem;
     pointer-events: none;
-    transition: all 0.2s ease-in-out;
+    transition: all var(--transition-medium);
   }
   
   input:focus ~ label,
@@ -144,46 +277,106 @@
   select:focus ~ label,
   select:valid ~ label {
     transform: translateY(-29px);
+    font-size: 0.9rem;
+    color: var(--primary-color);
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: var(--primary-color);
   }
   
   button {
-    color: white;
+    color: var(--light-color);
     width: 100%;
-    height: 40px;
-    border-radius: 20px;
-    background-color: rgb(134, 134, 134);
+    height: 50px;
+    border-radius: 25px;
+    background-color: var(--primary-color);
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    transition: all 0.2s ease-in-out;
-    margin-top: 10px;
+    transition: all var(--transition-medium);
+    margin-top: 20px;
+    box-shadow: var(--shadow-small);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition-medium);
   }
   
   section button:hover {
-    background-color: rgb(176, 176, 176);
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
   
+  section button:hover::before {
+    animation: shine 1.5s infinite;
+  }
+  
+  section button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Footer */
   footer {
-    height: 13vh;
-    background-color: rgb(165, 0, 0);
-    color: rgba(255, 255, 255, 0.973);
+    height: 20vh;
+    background-color: var(--primary-color);
+    color: var(--light-color);
     align-content: center;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-top: auto;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
   }
   
+  footer h3,
+  footer h4,
+  footer h5 {
+    color: var(--light-color);
+    position: relative;
+    z-index: 1;
+  }
+  
+  footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  
+  /* Header */
   header {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: red;
+    background-color: var(--light-color);
     padding: 20px 0;
+    border-bottom: 3px solid var(--primary-color);
+    border-radius: 0 0 20px 20px;
+    height: 30vh;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    z-index: 10;
   }
   
   .header__container {
@@ -191,16 +384,29 @@
     flex-direction: row;
     width: 50%;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding: 20px 0;
+    animation: fadeIn 1s ease;
   }
   
   .header__container__logo {
     display: flex;
     flex-direction: column;
     text-align: center;
-    gap: 5px;
-    padding-right: 5px;
+    gap: 10px;
+    padding-right: 10px;
+  }
+  
+  .header__container__logo a {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+  }
+  
+  .header__container__logo a:hover {
+    color: var(--primary-dark);
+    transform: scale(1.05);
   }
   
   .header__container__logo_img {
@@ -208,6 +414,11 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    transition: transform var(--transition-medium);
+  }
+  
+  .header__container__logo_img:hover {
+    transform: scale(1.05);
   }
   
   .img-1 {
@@ -215,6 +426,11 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+    transition: transform var(--transition-medium);
+  }
+  
+  .img-1:hover {
+    transform: rotate(5deg);
   }
   
   .header__container__gobi {
@@ -231,22 +447,27 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    transition: transform var(--transition-medium);
+  }
+  
+  .img-2:hover {
+    transform: scale(1.05);
   }
   
   .header__nav {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-left: 5px;
+    padding-left: 15px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
   
   .header__nav ul {
-    color: #000;
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     justify-self: center;
-    gap: 12px;
+    gap: 20px;
   }
   
   .header__nav ul li {
@@ -255,20 +476,72 @@
     font-size: 24px;
   }
   
-  .participantes {
+  .header__nav ul li a {
+    color: var(--secondary-color);
+    position: relative;
+    transition: all var(--transition-medium);
+    padding: 5px 10px;
+  }
+  
+  .header__nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all var(--transition-medium);
+    transform: translateX(-50%);
+  }
+  
+  .header__nav ul li a:hover {
+    color: var(--primary-color);
+  }
+  
+  .header__nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  .participantes,
+  .inscripcion {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
+    transition: all var(--transition-fast);
   }
   
-  .inscripcion {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    width: 100%;
-    height: 100%;
+  .participantes:hover,
+  .inscripcion:hover {
+    transform: translateY(-2px);
   }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .formulario {
+      flex-direction: column;
+    }
+  
+    section,
+    .fondo {
+      width: 100%;
+    }
+  
+    .contenido {
+      margin: 20px;
+    }
+  
+    header {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .header__container {
+      width: 90%;
+    }
+  }
+  
   
   
